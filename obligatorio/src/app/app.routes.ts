@@ -1,9 +1,10 @@
 import { RouterModule, Routes } from '@angular/router';
-import { LogInVotante } from './log-in-votante/log-in-votante';
+import { LogInIntegranteMesa } from './log-in-integrante-mesa/log-in-integrante-mesa'; 
+
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-{"path": '', component: LogInVotante}
+{"path": '', component: LogInIntegranteMesa}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
