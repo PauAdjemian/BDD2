@@ -1,64 +1,48 @@
-/* Contenedor principal */
-.container {
+.container{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 90vh;
-  padding: 20px;
-  background-color: #f2f2f2;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
+  justify-content: center; 
+  align-items: center; 
+  height: 90vh;  
 }
 
-/* Título */
-.container h2 {
+
+h2 {
+  color: #2a5298;
+  margin-bottom: 10px;
   font-size: 3rem;
-  color: #007bff;
-  margin-bottom: 30px;
 }
 
-/* Input de número */
-.container input[type="number"] {
+input {
   width: 100%;
-  max-width: 400px;
-  padding: 14px 16px;
-  font-size: 1.2rem;
-  border: 2px solid #007bff;
-  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border: 2px solid #4a90e2;
+  border-radius: 6px;
+  font-size: 3rem;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
 }
 
-/* Efecto al enfocar */
-.container input[type="number"]:focus {
-  border-color: #0056b3;
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+input:focus {
+  border-color: #1e3c72;
+  background-color: #d6e4ff;
 }
 
-/* Contenedor del botón */
-.container .button {
-  margin-top: 24px;
-  width: 100%;
-  max-width: 400px;
-}
-
-/* Botón azul */
-.container .button button {
-  width: 100%;
-  padding: 14px;
-  background-color: #007bff;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
+button {
+  padding: 8px 10px;
+  background-color: #2a5298;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+  font-size: 3rem;
+  
+}
+.button{
+  width: 100%;
 }
 
-/* Hover del botón */
-.container .button button:hover {
-  background-color: #0056b3;
+button:hover {
+  background-color: #1e3c72;
 }
+
