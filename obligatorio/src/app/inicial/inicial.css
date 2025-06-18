@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  height: 90vh;  
+}
+
+.container h2 {
+  color: #2a5298;
+  text-align: center;
+  margin: 0 0 100px 0; 
+  font-size: 3rem;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.button-container button {
+  padding: 8px 10px;
+  background-color: #2a5298;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+  font-size: 3rem;
+  width: 80%;
+  max-width: 500px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: #1e3c72;
+}
