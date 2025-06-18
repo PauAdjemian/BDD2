@@ -11,7 +11,7 @@ export class Inicial {
   constructor(private router: Router) {}
 
   irAVotante() {
-    this.router.navigate(['/votante']);
+    this.router.navigate(['/circuito']);
   }
 
   irAMesa() {
