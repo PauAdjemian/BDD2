@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BotonModo } from './boton-modo';
+import { Inicial } from './inicial';
 
-describe('BotonModo', () => {
-  let component: BotonModo;
-  let fixture: ComponentFixture<BotonModo>;
+describe('Inicial', () => {
+  let component: Inicial;
+  let fixture: ComponentFixture<Inicial>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BotonModo]
+      imports: [Inicial]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BotonModo);
+    fixture = TestBed.createComponent(Inicial);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
