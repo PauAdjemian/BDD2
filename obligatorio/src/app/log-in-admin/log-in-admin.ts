@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { BotonModo } from "../boton-modo/boton-modo";
 
 @Component({
   selector: 'app-log-in-admin',
-  imports: [BotonModo],
+  imports: [],
   templateUrl: './log-in-admin.html',
   styleUrl: './log-in-admin.css'
 })
