@@ -3,6 +3,7 @@ import { LogInIntegranteMesa } from './log-in-integrante-mesa/log-in-integrante-
 import { LogInAdmin } from './log-in-admin/log-in-admin';
 import { LogInVotante } from './log-in-votante/log-in-votante';
 import { Inicial } from './inicial/inicial';
+import { NroCircuito } from './nro-circuito/nro-circuito';
 
 import { NgModule } from '@angular/core';
 
@@ -11,6 +12,8 @@ export const routes: Routes = [
 {"path": 'admin', component: LogInAdmin},
 {"path": 'votante', component: LogInVotante},
 {"path": '', component: Inicial},
+{"path": 'circuito', component: NroCircuito},
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
