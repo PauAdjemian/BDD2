@@ -6,7 +6,7 @@ import { LogInVotante } from './log-in-votante/log-in-votante';
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-{"path": '', component: LogInIntegranteMesa},
+{"path": 'mesa', component: LogInIntegranteMesa},
 {"path": 'admin', component: LogInAdmin},
 {"path": 'votante', component: LogInVotante},
 ];
