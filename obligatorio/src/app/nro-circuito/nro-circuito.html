@@ -4,8 +4,11 @@
   <h2>¿A qué circuito corresponde este dispositivo?</h2>
   <input type="number" placeholder="Número" autocomplete="off" name="NroCircuito"/>
 
+
+  <app-pop-up-pm #Popup></app-pop-up-pm>
+
+  
   <section class="button-container">
-    <button type="button" (click)="irAVotante()">Confirmar</button>
+    <button (click)="Popup.open()">CONFIRMAR</button>
   </section>
 </div>
-  
