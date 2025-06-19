@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { PopUpPM } from "../pop-up-pm/pop-up-pm";
+
 
 @Component({
   selector: 'app-nro-circuito',
-  imports: [],
+  imports: [PopUpPM],
   templateUrl: './nro-circuito.html',
   styleUrl: './nro-circuito.css'
 })
 export class NroCircuito {
-  constructor(private router: Router) {}
-
-  irAVotante() {
-    this.router.navigate(['/votante']);
-  }
 }
