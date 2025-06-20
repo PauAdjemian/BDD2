@@ -23,7 +23,7 @@ constructor(private router: Router) {}
   abrirSiguiente() {
     this.isVisible = false;
 
-    // Esperamos a que el DOM se actualice antes de abrir el otro modal
+    
     setTimeout(() => {
       this.popup.open();
     }, 0);
