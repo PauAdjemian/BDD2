@@ -18,11 +18,14 @@
             <h2>Contraseña</h2>
             <input type="password" placeholder="Contraseña" autocomplete="off" name="Contraseña" readonly onfocus="this.removeAttribute('readonly');" />
         </section>
-        <section class="button">
-            <button type="submit">VOTAR</button>
-        </section>
         
     
+        <app-confirmar-usuario #Popup></app-confirmar-usuario>
+
+        <section class="button">
+            <button (click)="Popup.open()">CONFIRMAR</button>
+        </section>
+
     </section>    
 </section>
 
