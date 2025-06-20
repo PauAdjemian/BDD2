@@ -1,3 +1,4 @@
+<app-votado #Popup></app-votado>
 <div class="modal-backdrop" *ngIf="isVisible"> 
   <div class="modal">
     <div class="form-group">
@@ -13,7 +14,7 @@
       <input id="cedula" formControlName="cedula" type="text"/>
     </div>
     <section class="button">
-      <button type="submit">CONFIRMAR</button>
+      <button (click)="abrirSiguiente()">CONFIRMAR</button>
       <button class="close-btn" (click)="close()">CANCELAR</button>
     </section>
   </div>   
