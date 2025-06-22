@@ -1,0 +1,27 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-tareas-admin',
+  imports: [CommonModule, FormsModule],
+  templateUrl: './tareas-admin.html',
+  styleUrl: './tareas-admin.css'
+})
+export class TareasAdmin {
+opcionSeleccionada: string = '';
+  mostrar: boolean = false;
+
+  mostrarComponente() {
+    if (this.opcionSeleccionada === 'eleccion') {
+      this.mostrar = true;
+    }
+  }
+
+  onCerrarPopup(valor: boolean) {
+    this.mostrar = valor;
+  }
+
+
+
+}

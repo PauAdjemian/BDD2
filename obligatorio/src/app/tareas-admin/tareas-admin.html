@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="title">
+      <label for="opciones">¿Qué deseas agregar?</label>
+    </div>
+
+    <div class="opciones">
+      <select [(ngModel)]="opcionSeleccionada">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option value="eleccion">Elección</option>
+        <option value="establecimiento">Establecimiento</option>
+        <option value="candidato">Candidato</option>
+        <option value="papeleta">Papeleta</option>
+        <option value="lista">Lista</option>
+        <option value="integrante">Integrante de Mesa</option>
+        <option value="policia">Policía</option>
+      </select>
+    </div>
+
+    <div class="button-container">
+      <button (click)="mostrarComponente()">CONFIRMAR</button>
+    </div>
+  </div>
+</div>
+
