@@ -4,6 +4,7 @@ import { LogInAdmin } from './log-in-admin/log-in-admin';
 import { LogInVotante } from './log-in-votante/log-in-votante';
 import { Inicial } from './inicial/inicial';
 import { NroCircuito } from './nro-circuito/nro-circuito';
+import { PagListas } from './pag-listas/pag-listas';
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
@@ -12,7 +13,7 @@ export const routes: Routes = [
 {"path": 'votante', component: LogInVotante},
 {"path": '', component: Inicial},
 {"path": 'circuito', component: NroCircuito},
-
+{"path": 'listas', component: PagListas},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

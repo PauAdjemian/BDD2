@@ -1,0 +1,33 @@
+<div id="contenedor">
+  <div id="buscadorPartidos">
+    <input
+      type="text"
+      placeholder="Buscar lista, partido o candidato"
+      [(ngModel)]="searchText"
+      (ngModelChange)="filtrarCandidatos()" />
+
+    <ul class="lista-candidatos">
+      <li *ngFor="let lista of listasFiltradas">
+        <button
+          class="boton-candidato"
+          [ngStyle]="{'background-image': 'url(' + lista.imagen + ')'}">
+          
+          <div class="overlay">
+            <div class="nro-lista">Lista {{ lista.numero }}</div>
+            <div class="partido">{{ lista.partido }}</div>
+            <div class="candidatos">
+              <div *ngFor="let c of lista.candidatos">
+                <strong>{{ c.nombre }}</strong> – {{ c.cargo }}
+              </div>
+            </div>
+          </div>
+
+        </button>
+      </li>
+
+      <li *ngIf="listasFiltradas.length === 0" class="sin-resultados">
+        No se encontraron resultados.
+      </li>
+    </ul>
+  </div>
+</div>
