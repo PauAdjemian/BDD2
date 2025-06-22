@@ -1,11 +1,12 @@
 <app-sidebar></app-sidebar>
 <app-datetime></app-datetime>
+<app-confirmar-cerrar #Popup></app-confirmar-cerrar>
 <div class="container">
     <section class="button-container">
         <button [disabled]="true">ABRIR CIRCUITO</button>
     </section>
     <section class="button-container">
-        <button>CERRAR CIRCUITO</button>
+        <button (click)="Popup.open()">CERRAR CIRCUITO</button>
     </section>
     
 </div>
