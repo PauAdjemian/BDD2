@@ -9,6 +9,6 @@ import { ConfirmarUsuario } from "../confirmar-usuario/confirmar-usuario";
   styleUrl: './log-in-votante.css'
 })
 export class LogInVotante {
-[x: string]: any;
+
 
 }

@@ -6,6 +6,7 @@ import { Inicial } from './inicial/inicial';
 import { NroCircuito } from './nro-circuito/nro-circuito';
 import { PagListas } from './pag-listas/pag-listas';
 import { NgModule } from '@angular/core';
+import { AbrirCircuito } from './abrir-circuito/abrir-circuito';
 
 export const routes: Routes = [
 {"path": 'mesa', component: LogInIntegranteMesa},
@@ -14,6 +15,7 @@ export const routes: Routes = [
 {"path": '', component: Inicial},
 {"path": 'circuito', component: NroCircuito},
 {"path": 'listas', component: PagListas},
+{"path": 'abrir', component: AbrirCircuito},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
