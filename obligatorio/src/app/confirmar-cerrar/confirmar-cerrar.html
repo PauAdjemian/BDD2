@@ -1,0 +1,16 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+
+    <section class="content">
+      <section class="texto">
+        <h2>¿Estás seguro de cerrar el circuito?</h2>
+        <h3>Una vez confirmado no hay regreso</h3>
+      </section>
+
+      <section class="button">
+        <button type="submit" (click)="irACerrar()">CONFIRMAR</button>
+        <button class="close-btn" (click)="close()">CANCELAR</button>
+      </section>
+    </section>
+  </div>
+</div>
