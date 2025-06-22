@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Datetime } from "../datetime/datetime";
 
 @Component({
   selector: 'app-inicial',
-  imports: [],
+  imports: [Datetime],
   templateUrl: './inicial.html',
   styleUrl: './inicial.css'
 })

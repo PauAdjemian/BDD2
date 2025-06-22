@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConfirmarVoto } from "../confirmar-voto/confirmar-voto";
+import { Datetime } from "../datetime/datetime";
 
 @Component({
   selector: 'app-pag-listas',
-  imports: [FormsModule, CommonModule, ConfirmarVoto],
+  imports: [FormsModule, CommonModule, ConfirmarVoto, Datetime],
   templateUrl: './pag-listas.html',
   styleUrl: './pag-listas.css'
 })
