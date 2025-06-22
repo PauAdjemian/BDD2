@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Sidebar } from "../sidebar/sidebar";
 import { Datetime } from "../datetime/datetime";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-abrir-circuito',
@@ -9,5 +10,8 @@ import { Datetime } from "../datetime/datetime";
   styleUrl: './abrir-circuito.css'
 })
 export class AbrirCircuito {
-
+  constructor(private router: Router) {}
+  CerrarCircuito(){
+    this.router.navigate(['/cerrar']);
+  }
 }
