@@ -1,3 +1,5 @@
+<app-confirmar-voto #Popup></app-confirmar-voto>
+
 <div id="contenedor">
   <div id="buscadorPartidos">
     <input
@@ -8,7 +10,8 @@
 
     <ul class="lista-candidatos">
       <li *ngFor="let lista of listasFiltradas">
-        <button
+        <button 
+        (click)="Popup.open()"
           class="boton-candidato"
           [ngStyle]="{'background-image': 'url(' + lista.imagen + ')'}">
           
