@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ConfirmarVoto } from "../confirmar-voto/confirmar-voto";
 
 @Component({
   selector: 'app-pag-listas',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ConfirmarVoto],
   templateUrl: './pag-listas.html',
   styleUrl: './pag-listas.css'
 })
