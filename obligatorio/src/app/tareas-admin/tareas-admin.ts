@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AgregarEleccion } from "../agregar-eleccion/agregar-eleccion";
 
 @Component({
   selector: 'app-tareas-admin',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AgregarEleccion],
   templateUrl: './tareas-admin.html',
   styleUrl: './tareas-admin.css'
 })

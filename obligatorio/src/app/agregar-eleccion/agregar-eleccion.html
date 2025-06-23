@@ -1,0 +1,23 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+
+    <form id="eleccionForm">
+  <label for="fecha">Fecha:</label>
+  <input type="date" id="fecha" name="fecha" required>
+
+  <label for="tipoEleccion">Tipo de Elección:</label>
+  <select id="tipoEleccion" name="tipoEleccion" required>
+    <option value="" disabled selected>Selecciona una opción</option>
+    <option value="Departamental">Departamental</option>
+    <option value="Nacional">Nacional</option>
+    <option value="Municipal">Municipal</option>
+  </select>
+
+  <button type="submit" (click)="close()">ENVIAR</button>
+</form>
+      <section class="button">
+        <button class="close-btn" (click)="close()">CANCELAR</button>
+      </section>
+    
+  </div>
+</div>
