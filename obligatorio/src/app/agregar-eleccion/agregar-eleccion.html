@@ -1,7 +1,7 @@
 <div class="modal-backdrop" *ngIf="isVisible">
   <div class="modal">
 
-    <form id="eleccionForm">
+<form id="eleccionForm" (ngSubmit)="onSubmit()" #eleccionForm="ngForm">
   <label for="fecha">Fecha:</label>
   <input type="date" id="fecha" name="fecha" required>
 

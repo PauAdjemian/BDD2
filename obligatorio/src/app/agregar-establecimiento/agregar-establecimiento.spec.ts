@@ -20,4 +20,5 @@ describe('AgregarEstablecimiento', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
