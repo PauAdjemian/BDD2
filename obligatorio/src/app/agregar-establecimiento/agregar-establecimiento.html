@@ -1,0 +1,32 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+
+    <form (ngSubmit)="onSubmit()" #establecimientoForm="ngForm">
+      
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="establecimiento.nombre"
+        required
+      />
+
+      <label for="direccion">Dirección:</label>
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        [(ngModel)]="establecimiento.direccion"
+        required
+      />
+
+      <button type="submit" [disabled]="establecimientoForm.invalid" (click)="close()">ENVIAR</button>
+    </form>
+
+    <section class="button">
+      <button class="close-btn" (click)="close()">CANCELAR</button>
+    </section>
+
+  </div>
+</div>
