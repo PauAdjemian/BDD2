@@ -1,0 +1,42 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+    <h2>Cargar Participación</h2>
+
+    <form (ngSubmit)="onSubmit()" #participacionForm="ngForm">
+      <div class="form-group">
+        <label for="fecha">Fecha de Elección:</label>
+        <input
+          type="date"
+          id="fecha"
+          name="fecha_elección"
+          required
+          [min]="hoy"
+          [(ngModel)]="nuevaParticipacion.fecha_eleccion"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tipoEleccion">Tipo de Elección:</label>
+        <select id="tipoEleccion" name="tipoEleccion" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Departamental">Departamental</option>
+            <option value="Nacional">Nacional</option>
+            <option value="Municipal">Municipal</option>
+        </select>
+
+      <div class="form-group">
+        <label for="partido">Partido:</label>
+        <input
+          type="text"
+          id="partido"
+          name="partido"
+          required
+          [(ngModel)]="nuevaParticipacion.partido"
+        />
+      </div>
+
+      <div class="botones">
+        <button type="submit" [disabled]="participacionForm.invalid" (click)="close()">Guardar</button>
+        <button type="button" (click)="close()">Cancelar</button>
+      </div>
+  </div>

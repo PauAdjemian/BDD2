@@ -9,10 +9,11 @@ import { AgregarLista } from "../agregar-lista/agregar-lista";
 import { AgregarIM } from "../agregar-im/agregar-im";
 import { AgregarPolicia } from "../agregar-policia/agregar-policia";
 import { AgregarPartidoPolitico } from "../agregar-partido-politico/agregar-partido-politico";
+import { AgregarParticipacion } from "../agregar-participacion/agregar-participacion";
 
 @Component({
   selector: 'app-tareas-admin',
-  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta, AgregarLista, AgregarIM, AgregarPolicia, AgregarPartidoPolitico],
+  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta, AgregarLista, AgregarIM, AgregarPolicia, AgregarPartidoPolitico, AgregarParticipacion],
   templateUrl: './tareas-admin.html',
   styleUrl: './tareas-admin.css'
 })
@@ -26,6 +27,7 @@ export class TareasAdmin {
   @ViewChild('PopupIM') popupIM!: AgregarIM;
   @ViewChild('PopupPolicia') popupPolicia!: AgregarPolicia;
   @ViewChild('PopupPartido') PopupPartido!: AgregarPartidoPolitico;
+  @ViewChild('PopupParticipacion') PopupParticipacion!: AgregarParticipacion;
   
   opcionSeleccionada: string = '';
 
@@ -57,7 +59,9 @@ export class TareasAdmin {
       case 'partido':
         this.PopupPartido.open();
         break;
+      case 'participacion':
+        this.PopupParticipacion.open();
+        break;
+    }
     }
   }
-
-}
