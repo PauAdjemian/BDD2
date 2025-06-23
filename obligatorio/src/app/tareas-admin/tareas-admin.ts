@@ -5,10 +5,11 @@ import { AgregarEleccion } from "../agregar-eleccion/agregar-eleccion";
 import { AgregarEstablecimiento } from "../agregar-establecimiento/agregar-establecimiento";
 import { AgregarCandidato } from "../agregar-candidato/agregar-candidato";
 import { AgregarPapeleta } from "../agregar-papeleta/agregar-papeleta";
+import { AgregarLista } from "../agregar-lista/agregar-lista";
 
 @Component({
   selector: 'app-tareas-admin',
-  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta],
+  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta, AgregarLista],
   templateUrl: './tareas-admin.html',
   styleUrl: './tareas-admin.css'
 })
@@ -18,6 +19,7 @@ export class TareasAdmin {
   @ViewChild('PopupEstablecimiento') popupEstablecimiento!: AgregarEstablecimiento;
   @ViewChild('PopupCandidato') popupCandidato!: AgregarCandidato;
   @ViewChild('PopupPapeleta') popupPapeleta!: AgregarPapeleta;
+  @ViewChild('PopupLista') popupLista!: AgregarLista;
   
   opcionSeleccionada: string = '';
 
@@ -37,6 +39,10 @@ export class TareasAdmin {
       case 'papeleta':
         this.popupPapeleta.open();
         break;
+      case 'lista':
+        this.popupLista.open();
+        break;
+      
     }
   }
 
