@@ -7,6 +7,7 @@
     <div class="opciones">
       <select [(ngModel)]="opcionSeleccionada">
         <option value="" disabled selected>Seleccione una opción</option>
+        <option value="votante">Votante</option>
         <option value="eleccion">Elección</option>
         <option value="establecimiento">Establecimiento</option>
         <option value="candidato">Candidato</option>
@@ -22,7 +23,7 @@
     <div class="button-container">
       <button (click)="abrirPopup()">CONFIRMAR</button>
     </div>
-
+    <app-agregar-votante #PopupVotante></app-agregar-votante>
     <app-agregar-eleccion #PopupEleccion></app-agregar-eleccion>
     <app-agregar-establecimiento #PopupEstablecimiento></app-agregar-establecimiento>
     <app-agregar-candidato #PopupCandidato></app-agregar-candidato>
