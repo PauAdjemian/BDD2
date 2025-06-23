@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="title">
+      <label for="opciones">¿Qué deseas agregar?</label>
+    </div>
+
+    <div class="opciones">
+      <select [(ngModel)]="opcionSeleccionada">
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option value="eleccion">Elección</option>
+        <option value="establecimiento">Establecimiento</option>
+        <option value="candidato">Candidato</option>
+        <option value="papeleta">Papeleta</option>
+        <option value="lista">Lista</option>
+        <option value="integrante">Integrante de Mesa</option>
+        <option value="policia">Policía</option>
+        <option value="partido">Partido Político</option>
+        <option value="participacion">Partido a Elección</option>
+      </select>
+    </div>
+
+    <div class="button-container">
+      <button (click)="abrirPopup()">CONFIRMAR</button>
+    </div>
+
+    <app-agregar-eleccion #PopupEleccion></app-agregar-eleccion>
+    <app-agregar-establecimiento #PopupEstablecimiento></app-agregar-establecimiento>
+    <app-agregar-candidato #PopupCandidato></app-agregar-candidato>
+    <app-agregar-papeleta #PopupPapeleta></app-agregar-papeleta>
+    <app-agregar-lista #PopupLista></app-agregar-lista>
+    <app-agregar-im #PopupIM></app-agregar-im>
+    <app-agregar-policia #PopupPolicia></app-agregar-policia>
+    <app-agregar-partido-politico #PopupPartido></app-agregar-partido-politico>
+    <app-agregar-participacion #PopupParticipacion></app-agregar-participacion>
+  </div>
+</div>
+

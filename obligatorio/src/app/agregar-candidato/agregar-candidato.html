@@ -1,0 +1,55 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+    <form (ngSubmit)="onSubmit()" #candidatoForm="ngForm">
+
+      <label for="ci">CI:</label>
+      <input
+        type="number"
+        id="ci"
+        name="ci"
+        [(ngModel)]="candidato.CI"
+        required
+        min="10000000"
+        max="99999999"
+        placeholder="ingrese 8 dígitos sin puntos ni guiones"
+      />
+
+      <label for="partido">Partido:</label>
+      <input
+        type="text"
+        id="partido"
+        name="partido"
+        [(ngModel)]="candidato.partido"
+        required
+      />
+
+      <label for="tipoEleccion">Tipo de Elección:</label>
+      <select
+        id="tipoEleccion"
+        name="tipoEleccion"
+        [(ngModel)]="candidato.tipo_eleccion"
+        required
+      >
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Departamental">Departamental</option>
+        <option value="Nacional">Nacional</option>
+        <option value="Municipal">Municipal</option>
+      </select>
+
+      <label for="fechaEleccion">Fecha Elección:</label>
+      <input
+        type="date"
+        id="fechaEleccion"
+        name="fechaEleccion"
+        [(ngModel)]="candidato.fecha_eleccion"
+        required
+      />
+
+      <button type="submit" [disabled]="candidatoForm.invalid">ENVIAR</button>
+    </form>
+
+    <section class="button">
+      <button class="close-btn" (click)="close()">CANCELAR</button>
+    </section>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Datetime } from "../datetime/datetime";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in-admin',
@@ -9,4 +10,9 @@ import { Datetime } from "../datetime/datetime";
 })
 export class LogInAdmin {
 
+  constructor(private router: Router) {}
+
+  irAFunciones(){
+    this.router.navigate(['/tareas']);
+  }
 }

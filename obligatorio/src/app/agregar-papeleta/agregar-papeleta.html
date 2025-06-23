@@ -1,0 +1,50 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+    <form (ngSubmit)="onSubmit()" #papeletaForm="ngForm">
+
+      <label for="tipo">Tipo de Papeleta:</label>
+      <select
+        id="tipo"
+        name="tipo"
+        [(ngModel)]="papeleta.tipo"
+        required
+      >
+        <option value="" disabled selected>Selecciona un tipo</option>
+        <option value="Lista">Lista</option>
+        <option value="Referéndum">Referéndum</option>
+        <option value="Plebiscito">Plebiscito</option>
+        <option value="Derogación de ley">Derogación de ley</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <label for="tipoEleccion">Tipo de Elección:</label>
+      <select
+        id="tipoEleccion"
+        name="tipoEleccion"
+        [(ngModel)]="papeleta.tipo_eleccion"
+        required
+      >
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Departamental">Departamental</option>
+        <option value="Nacional">Nacional</option>
+        <option value="Municipal">Municipal</option>
+      </select>
+
+      <label for="fechaEleccion">Fecha de Elección:</label>
+      <input
+        type="date"
+        id="fechaEleccion"
+        name="fechaEleccion"
+        [(ngModel)]="papeleta.fecha_eleccion"
+        [min]="hoy"
+        required
+      />
+
+      <button type="submit" [disabled]="papeletaForm.invalid" (click)="close()">ENVIAR</button>
+    </form>
+
+    <section class="button">
+      <button class="close-btn" (click)="close()">CANCELAR</button>
+    </section>
+  </div>
+</div>

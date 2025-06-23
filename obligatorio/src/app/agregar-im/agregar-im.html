@@ -1,0 +1,85 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+    <form (ngSubmit)="onSubmit()" #integranteForm="ngForm">
+
+      <label for="ci">CI:</label>
+      <input
+        type="text"
+        id="ci"
+        name="ci"
+        [(ngModel)]="integrante.CI"
+        required
+        maxlength="8"
+        pattern="^[0-9]{8}$"
+        title="Ingrese 8 dígitos numéricos"
+      />
+
+
+
+      <label for="fecha">Fecha:</label>
+      <input
+        type="date"
+        id="fecha"
+        name="fecha"
+        [(ngModel)]="integrante.fecha"
+        [min]="hoy"
+        required
+      />
+
+      <label for="rol">Rol:</label>
+      <input
+        type="text"
+        id="rol"
+        name="rol"
+        [(ngModel)]="integrante.rol"
+        required
+      />
+
+      <label for="organismo">Organismo Público:</label>
+      <input
+        type="text"
+        id="organismo"
+        name="organismo_público"
+        [(ngModel)]="integrante.organismo_publico"
+        required
+      />
+
+      <label for="idCircuito">ID Circuito:</label>
+      <input
+        type="number"
+        id="idCircuito"
+        name="ID_circuito"
+        [(ngModel)]="integrante.ID_circuito"
+        required
+        min="1"
+      />
+
+      <label for="idEstablecimiento">ID Establecimiento:</label>
+      <input
+        type="number"
+        id="idEstablecimiento"
+        name="ID_establecimiento"
+        [(ngModel)]="integrante.ID_establecimiento"
+        required
+        min="1"
+      />
+
+      <label for="contraseña">Contraseña:</label>
+      <input
+        type="password"
+        id="contraseña"
+        name="contraseña"
+        [(ngModel)]="integrante.contrasenia"
+        required
+        readonly onfocus="this.removeAttribute('readonly');"
+        minlength="6"
+      />
+
+      <button type="submit" [disabled]="integranteForm.invalid" (click)="close()">ENVIAR</button>
+    </form>
+
+    <section class="button">
+      <button class="close-btn" (click)="close()">CANCELAR</button>
+    </section>
+  </div>
+</div>
