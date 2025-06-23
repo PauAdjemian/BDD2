@@ -7,10 +7,11 @@ import { AgregarCandidato } from "../agregar-candidato/agregar-candidato";
 import { AgregarPapeleta } from "../agregar-papeleta/agregar-papeleta";
 import { AgregarLista } from "../agregar-lista/agregar-lista";
 import { AgregarIM } from "../agregar-im/agregar-im";
+import { AgregarPolicia } from "../agregar-policia/agregar-policia";
 
 @Component({
   selector: 'app-tareas-admin',
-  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta, AgregarLista, AgregarIM],
+  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta, AgregarLista, AgregarIM, AgregarPolicia],
   templateUrl: './tareas-admin.html',
   styleUrl: './tareas-admin.css'
 })
@@ -22,6 +23,8 @@ export class TareasAdmin {
   @ViewChild('PopupPapeleta') popupPapeleta!: AgregarPapeleta;
   @ViewChild('PopupLista') popupLista!: AgregarLista;
   @ViewChild('PopupIM') popupIM!: AgregarIM;
+  @ViewChild('PopupPolicia') popupPolicia!: AgregarPolicia;
+  
   
   opcionSeleccionada: string = '';
 
@@ -46,6 +49,9 @@ export class TareasAdmin {
         break;
       case 'integrante':
         this.popupIM.open();
+        break;
+      case 'policia':
+        this.popupPolicia.open();
         break;
     }
   }

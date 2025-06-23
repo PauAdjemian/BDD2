@@ -19,6 +19,12 @@ export class AgregarCandidato {
   };
 
   open() {
+    this.candidato={
+      CI: null,
+      partido: '',
+    tipo_eleccion: '',
+    fecha_eleccion: '',
+    }
     this.isVisible = true;
   }
 
