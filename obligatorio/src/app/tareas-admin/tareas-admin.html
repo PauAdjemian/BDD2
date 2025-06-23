@@ -1,4 +1,3 @@
-<app-agregar-eleccion #Popup></app-agregar-eleccion>
 <div class="wrapper">
   <div class="container">
     <div class="title">
@@ -19,8 +18,10 @@
     </div>
 
     <div class="button-container">
-      <button (click)="Popup.open()">CONFIRMAR</button>
+      <button (click)="abrirPopup()">CONFIRMAR</button>
     </div>
+
+    <app-agregar-eleccion #PopupEleccion></app-agregar-eleccion>
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AgregarEleccion } from "../agregar-eleccion/agregar-eleccion";
 
@@ -10,19 +10,19 @@ import { AgregarEleccion } from "../agregar-eleccion/agregar-eleccion";
   styleUrl: './tareas-admin.css'
 })
 export class TareasAdmin {
-opcionSeleccionada: string = '';
-  mostrar: boolean = false;
 
-  mostrarComponente() {
-    if (this.opcionSeleccionada === 'eleccion') {
-      this.mostrar = true;
+  @ViewChild('PopupEleccion') popupEleccion!: AgregarEleccion;
+  
+  opcionSeleccionada: string = '';
+
+
+
+  abrirPopup() {
+    switch (this.opcionSeleccionada) {
+      case 'eleccion':
+        this.popupEleccion.open();
+        break;
     }
   }
-
-  onCerrarPopup(valor: boolean) {
-    this.mostrar = valor;
-  }
-
-
 
 }
