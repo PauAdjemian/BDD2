@@ -17,7 +17,7 @@
 
       <div class="form-group">
         <label for="tipoEleccion">Tipo de Elección:</label>
-        <select id="tipoEleccion" name="tipoEleccion" required>
+        <select id="tipoEleccion" name="tipoEleccion" required [(ngModel)]="nuevaParticipacion.tipo_eleccion">
             <option value="" disabled selected>Selecciona una opción</option>
             <option value="Departamental">Departamental</option>
             <option value="Nacional">Nacional</option>

@@ -1,15 +1,14 @@
 <app-sidebar></app-sidebar>
 <app-datetime></app-datetime>
 <app-confirmar-abrir #Popup></app-confirmar-abrir>
+
 <div class="container">
+    <h2>Estado del circuito {{ circuito }}: {{ estadoCircuito }}</h2>
     <section class="button-container">
-        <button (click)="Popup.open()">ABRIR CIRCUITO</button>
+        <button (click)="Popup.open()">ABRIR CIRCUITO {{circuito}}</button>
     </section>
     <section class="button-container">
-        <button [disabled]="true">CERRAR CIRCUITO</button>
+        <button [disabled]="true">CERRAR CIRCUITO {{circuito}}</button>
     </section>
     
 </div>
-  
-    
-   
