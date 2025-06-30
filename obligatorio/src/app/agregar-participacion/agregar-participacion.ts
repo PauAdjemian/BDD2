@@ -19,17 +19,34 @@ hoy = new Date().toISOString().split('T')[0];
 isVisible = false;
 
 onSubmit() {
-  console.log('Datos a enviar:', this.nuevaParticipacion);
-  if (this.nuevaParticipacion.fecha_eleccion < this.hoy) {
-    alert("La fecha debe ser hoy o posterior.");
-    return;
-  }
-  const recibido = {
+    const parametros = {
     fecha_elección:this.nuevaParticipacion.fecha_eleccion,
     tipo_elección:this.nuevaParticipacion.tipo_eleccion,
     partido:this.nuevaParticipacion.partido,
   }
-}
+    console.log('Parámetros enviados:', parametros);
+    fetch('http://localhost:3000/admin/cargarParticipacion', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(parametros)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exito) {
+      alert(data.message); 
+      this.close();        
+    } else {
+      alert('Error al cargar participación');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error al comunicarse con el servidor');
+  });
+};
+
 
 close() {
   this.isVisible = false;

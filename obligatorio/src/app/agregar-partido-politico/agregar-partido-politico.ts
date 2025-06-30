@@ -19,13 +19,36 @@ export class AgregarPartidoPolitico {
 isVisible = false;
 
 onSubmit() {
-  const recibido={
+    const parametros={
     nombre:this.nuevoPartido.nombre,
-    direccion_sede:this.nuevoPartido.direccion_sede,
+    dirección_sede:this.nuevoPartido.direccion_sede,
     presidente:this.nuevoPartido.presidente,
     vicepresidente:this.nuevoPartido.vicepresidente,
   }
-}
+  console.log('Formulario enviado:', this.nuevoPartido);
+    console.log('Parámetros enviados:', parametros);
+    fetch('http://localhost:3000/admin/cargarPartidoPolitico', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(parametros)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exito) {
+      alert(data.message); 
+      this.close();        
+    } else {
+      alert('Error al cargar partido político');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error al comunicarse con el servidor');
+  });
+};
+
 open(){
   this.nuevoPartido={
     nombre: '',

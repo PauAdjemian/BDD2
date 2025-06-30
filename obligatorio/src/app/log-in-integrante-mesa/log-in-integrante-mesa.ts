@@ -40,6 +40,7 @@ export class LogInIntegranteMesa {
     })
     .then(data => {
       if (data.autenticado) {
+        sessionStorage.setItem('circuito', data.circuito.toString());
         this.router.navigate(['/abrir']);
       } else {
         alert('Credenciales incorrectas');
