@@ -18,6 +18,7 @@ export class LogInIntegranteMesa {
   numero!: number;
   serie: string = '';
   contrasenia: string = '';
+  fecha: string = new Date().toISOString().split('T')[0];
   
   loginIM() {
     if (!this.numero || !this.serie || !this.contrasenia) {
@@ -31,11 +32,12 @@ export class LogInIntegranteMesa {
       body: JSON.stringify({
         número: this.numero,
         serie: this.serie,
-        contraseña: this.contrasenia
+        contraseña: this.contrasenia,
+        fecha: this.fecha
       })
     })
     .then(res => {
-      if (!res.ok) throw new Error('Credenciales incorrectas');
+      if (!res.ok) throw new Error('INICIO DE SESIÓN FALLIDO');
       return res.json();
     })
     .then(data => {
@@ -43,7 +45,7 @@ export class LogInIntegranteMesa {
         sessionStorage.setItem('circuito', data.circuito.toString());
         this.router.navigate(['/abrir']);
       } else {
-        alert('Credenciales incorrectas');
+        alert('INICIO DE SESIÓN FALLIDO');
       }
     })
     .catch(err => {
