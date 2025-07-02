@@ -25,31 +25,33 @@ export class ConfirmarAbrir {
 
   irACerrar() {
     this.llamarAbrir();
-    this.router.navigate(['/cerrar']);
   }
 
   llamarAbrir = () => {
     const circuito = sessionStorage.getItem('circuito');
-    fetch(`http://localhost:3000/circuitos/${circuito}/abrir`, {
+
+
+     fetch(`http://localhost:3000/circuitos/${circuito}/abrir`, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    .then(res => {
+    .then(async res => {
+    const body = await res.json();
+
       if (!res.ok) {
-        throw new Error('Error al abrir el circuito');
+        throw new Error(body.message ||'Error al abrir el circuito');
       }
-      return res.json();
+      return body;
     })
     .then(data => {
-      console.log('Circuito abiertp:', data);
       alert('Circuito abierto correctamente');
       this.router.navigate(['/cerrar']);
     })
     .catch(err => {
       console.error(err);
-      alert('No se pudo abrir el circuito');
+      alert(err.message || 'No se pudo abrir el circuito');
     });
   }
 

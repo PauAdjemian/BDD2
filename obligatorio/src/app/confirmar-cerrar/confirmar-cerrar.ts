@@ -49,7 +49,7 @@ export class ConfirmarCerrar {
     })
     .catch(err => {
       console.error(err);
-      alert('No se pudo abrir el circuito');
+      alert('No se pudo cerrar el circuito');
     });
   }
 
