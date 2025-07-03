@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Datetime } from "../datetime/datetime";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Console } from 'node:console';
 
 
 @Component({
@@ -43,7 +44,8 @@ export class LogInIntegranteMesa {
     .then(data => {
       if (data.autenticado) {
         sessionStorage.setItem('circuito', data.circuito.toString());
-        this.router.navigate(['/abrir']);
+        this.irA(data.circuito);
+
       } else {
         alert('INICIO DE SESIÓN FALLIDO');
       }
@@ -52,6 +54,26 @@ export class LogInIntegranteMesa {
       console.error(err);
       alert(err.message || 'Error de conexión');
     });
+  }
+
+  private async irA(circuitoId: number) {
+    try {
+      const estadoRes = await fetch(`http://localhost:3000/circuitos/${circuitoId}/estado`);
+      if (!estadoRes.ok) throw new Error('No se pudo obtener el estado del circuito');
+
+      const estadoData = await estadoRes.json();
+
+      if (estadoData.estado === true) {
+        this.router.navigate(['/cerrar']);
+      } else if (estadoData.estado === false) {
+        this.router.navigate(['/abrir']);
+      } else {
+        alert('Formato de estado de circuito inesperado.');
+      }
+    } catch (err: any) {
+      console.error(err);
+      alert(err.message || 'Error al consultar el estado del circuito');
+    }
   }
 }
 

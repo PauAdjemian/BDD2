@@ -9,10 +9,12 @@ import { NgModule } from '@angular/core';
 import { AbrirCircuito } from './abrir-circuito/abrir-circuito';
 import { CerrarCircuito } from './cerrar-circuito/cerrar-circuito';
 import { TareasAdmin } from './tareas-admin/tareas-admin';
+import { Resultados } from './resultados/resultados';
 
 export const routes: Routes = [
 {"path": 'mesa', component: LogInIntegranteMesa},
 {"path": 'admin', component: LogInAdmin},
+{"path": 'resultados', component: Resultados},
 {"path": 'votante', component: LogInVotante},
 {"path": '', component: Inicial},
 {"path": 'circuito', component: NroCircuito},
