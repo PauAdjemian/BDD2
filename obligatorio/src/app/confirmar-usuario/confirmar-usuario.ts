@@ -41,5 +41,9 @@ constructor(private router: Router) {}
     this.router.navigate(['/votante']);
   }
 
+  irAlistas(){
+    this.router.navigate(['/listas']);
+  }
+
 }
 
