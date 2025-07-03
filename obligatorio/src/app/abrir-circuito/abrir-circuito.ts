@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Sidebar } from "../sidebar/sidebar";
 import { Datetime } from "../datetime/datetime";
 import { ConfirmarAbrir } from "../confirmar-abrir/confirmar-abrir";
+import { Resultados } from '../resultados/resultados';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-abrir-circuito',
@@ -10,6 +12,8 @@ import { ConfirmarAbrir } from "../confirmar-abrir/confirmar-abrir";
   styleUrl: './abrir-circuito.css'
 })
 export class AbrirCircuito {
+
+  constructor(private router: Router) {}
 
   circuito: string | null = null;
 
@@ -32,4 +36,23 @@ export class AbrirCircuito {
       this.estadoCircuito = 'Circuito no definido';
     }
   }
+
+public async irAResultados() {
+  const response = await fetch(`http://localhost:3000/circuitos/${this.circuito}/habilitaResultados`);
+
+  const data = await response.json(); 
+
+  if (!response.ok) {
+    alert(data.message || 'Error al habilitar resultados');
+    return;
+  }
+
+  if (!data.habilitado) {
+    alert(data.message || 'Error al habilitar resultados');
+    return;
+  }
+
+  this.router.navigate(['/resultados']);
+}
+
 }
