@@ -14,9 +14,6 @@ export class LogInAdmin {
 
   constructor(private router: Router) {}
 
-  irAFunciones(){
-    this.router.navigate(['/tareas']);
-  }
 
   usuario: string = '';
   contrasenia: string = '';
@@ -41,7 +38,7 @@ export class LogInAdmin {
     })
     .then(data => {
       if (data.autenticado) {
-        this.router.navigate(['/abrir']);
+        this.router.navigate(['/tareas']);
       } else {
         alert('Credenciales incorrectas');
       }

@@ -47,7 +47,7 @@ export class AgregarIM {
       return;
     }
 
-    const recibido = {
+    const recibidos = {
       CI: this.integrante.CI,
       fecha: this.integrante.fecha,
       rol: this.integrante.rol,
@@ -56,9 +56,27 @@ export class AgregarIM {
       ID_establecimiento: this.integrante.ID_establecimiento,
       contraseña: this.integrante.contrasenia
     };
+    fetch('http://localhost:3000/admin/cargarIntegrante', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(recibidos)
+    
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exito) {
+      alert(data.message); 
+      this.close();        
+    } else {
+      alert(data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error al comunicarse con el servidor');
+  });
+};
   }
 
-
-
-
-}
