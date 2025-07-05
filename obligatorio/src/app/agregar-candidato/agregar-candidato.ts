@@ -40,7 +40,7 @@ export class AgregarCandidato {
       fecha_elección: this.candidato.fecha_eleccion
     };
 
-    console.log(recibidos)
+
     fetch('http://localhost:3000/admin/cargarCandidato', {
     method: 'POST',
     headers: {
