@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh;
+  padding: 20px;
+  background-color: #f2f2f2;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-container select,
+.form-container input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button {
+  margin-top: 20px;
+  padding: 16px 24px;
+  background-color: #2a5298;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 80%;
+  max-width: 500px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #1e3c72;
+}
+
+.tabla-resultados {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 700px;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.tabla-resultados th,
+.tabla-resultados td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+}
+
+.tabla-resultados th {
+  background-color: #2a5298;
+  color: white;
+}
+
+.tabla-resultados tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
