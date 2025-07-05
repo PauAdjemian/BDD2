@@ -1,1 +1,39 @@
-<p>resultados works!</p>
+<div class="container">
+  <h2>Resultados de Votación</h2>
+
+  <form (ngSubmit)="obtenerResultados()" #form="ngForm" class="form-container">
+    <label for="tipoFiltro">Filtrar por:</label>
+    <select id="tipoFiltro" [(ngModel)]="tipoFiltro" name="tipoFiltro" required>
+      <option value="Nacional">Nacional</option>
+      <option value="Nacional por circuito">Nacional por circuito</option>
+      <option value="Nacional por departamento">Nacional por departamento</option>
+    </select>
+
+    <input *ngIf="tipoFiltro !== 'Nacional'" 
+           [(ngModel)]="valorFiltro" 
+           name="valorFiltro"
+           type="text" 
+           [placeholder]="placeholderFiltro"
+           required />
+
+    <div class="button-container">
+      <button type="submit">Ver Resultados</button>
+    </div>
+  </form>
+
+
+  <table *ngIf="resultados.length > 0" class="tabla-resultados">
+  <thead>
+    <tr>
+      <th *ngFor="let clave of obtenerClaves(resultados[0])">{{ clave }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fila of resultados">
+      <td *ngFor="let clave of obtenerClaves(fila)">{{ fila[clave] }}</td>
+    </tr>
+  </tbody>
+  </table>
+
+
+</div>

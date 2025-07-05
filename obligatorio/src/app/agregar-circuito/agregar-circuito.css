@@ -1,9 +1,8 @@
 .modal-backdrop {
   position: fixed;
   top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.6);
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,9 +13,9 @@
   background-color: #fff;
   padding: 25px 30px;
   border-radius: 8px;
-  max-width: 450px;
+  max-width: 420px;
   width: 90%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -33,8 +32,6 @@
 
 .modal input[type="text"],
 .modal input[type="number"],
-.modal input[type="string"],
-.modal input[type="url"],
 .modal select {
   padding: 8px 12px;
   font-size: 1rem;
@@ -43,7 +40,8 @@
   transition: border-color 0.3s ease;
 }
 
-.modal input:focus,
+.modal input[type="text"]:focus,
+.modal input[type="number"]:focus,
 .modal select:focus {
   outline: none;
   border-color: #007bff;
