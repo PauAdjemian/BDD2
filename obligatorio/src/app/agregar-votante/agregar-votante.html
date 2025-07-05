@@ -1,0 +1,74 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+    <form (ngSubmit)="onSubmit()" #personaForm="ngForm">
+
+      <label for="ci">CI:</label>
+      <input
+        type="number"
+        id="ci"
+        name="ci"
+        [(ngModel)]="persona.ci"
+        required
+        min="10000000"
+        max="99999999"
+        
+      />
+
+      <label for="numero_credencial">Número de Credencial:</label>
+      <input
+        type="number"
+        id="numero_credencial"
+        name="numero_credencial"
+        [(ngModel)]="persona.numero_credencial"
+        required
+       
+      />
+
+      <label for="serie_credencial">Serie de Credencial:</label>
+      <input
+        type="text"
+        id="serie_credencial"
+        name="serie_credencial"
+        [(ngModel)]="persona.serie_credencial"
+        required
+        
+      />
+
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="persona.nombre"
+        required
+        
+      />
+
+      <label for="apellido">Apellido:</label>
+      <input
+        type="text"
+        id="apellido"
+        name="apellido"
+        [(ngModel)]="persona.apellido"
+        required
+        
+      />
+
+      <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+      <input
+        type="date"
+        id="fecha_nacimiento"
+        name="fecha_nacimiento"
+        [(ngModel)]="persona.fecha_nacimiento"
+        required
+        [max]="hoy"
+      />
+
+      <button type="submit" [disabled]="personaForm.invalid" (click)="close()">ENVIAR</button>
+    </form>
+
+    <section class="button">
+      <button class="close-btn" (click)="close()">CANCELAR</button>
+    </section>
+  </div>
+</div>

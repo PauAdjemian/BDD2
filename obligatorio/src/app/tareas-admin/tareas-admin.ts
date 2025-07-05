@@ -10,15 +10,17 @@ import { AgregarIM } from "../agregar-im/agregar-im";
 import { AgregarPolicia } from "../agregar-policia/agregar-policia";
 import { AgregarPartidoPolitico } from "../agregar-partido-politico/agregar-partido-politico";
 import { AgregarParticipacion } from "../agregar-participacion/agregar-participacion";
+import { AgregarVotante } from "../agregar-votante/agregar-votante";
 
 @Component({
   selector: 'app-tareas-admin',
-  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta, AgregarLista, AgregarIM, AgregarPolicia, AgregarPartidoPolitico, AgregarParticipacion],
+  imports: [CommonModule, FormsModule, AgregarEleccion, AgregarEstablecimiento, AgregarCandidato, AgregarPapeleta, AgregarLista, AgregarIM, AgregarPolicia, AgregarPartidoPolitico, AgregarParticipacion, AgregarVotante],
   templateUrl: './tareas-admin.html',
   styleUrl: './tareas-admin.css'
 })
 export class TareasAdmin {
 
+  @ViewChild('PopupVotante') PopupVotante!: AgregarVotante;
   @ViewChild('PopupEleccion') popupEleccion!: AgregarEleccion;
   @ViewChild('PopupEstablecimiento') popupEstablecimiento!: AgregarEstablecimiento;
   @ViewChild('PopupCandidato') popupCandidato!: AgregarCandidato;
@@ -35,6 +37,9 @@ export class TareasAdmin {
 
   abrirPopup() {
     switch (this.opcionSeleccionada) {
+      case 'votante':
+        this.PopupVotante.open();
+        break;
       case 'eleccion':
         this.popupEleccion.open();
         break;

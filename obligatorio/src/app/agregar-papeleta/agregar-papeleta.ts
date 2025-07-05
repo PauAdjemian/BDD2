@@ -31,10 +31,34 @@ export class AgregarPapeleta {
     alert("La fecha debe ser hoy o posterior.");
     return;
   }
-    const recibido = {
+    const recibidos = {
       tipo: this.papeleta.tipo,
-      "tipo_elección": this.papeleta.tipo_eleccion,
-      "fecha_elección": this.papeleta.fecha_eleccion
+      tipo_elección: this.papeleta.tipo_eleccion,
+      fecha_elección: this.papeleta.fecha_eleccion
     };
-}
+
+    fetch('http://localhost:3000/admin/cargarPapeleta', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(recibidos)
+    
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exito) {
+      alert(data.message); 
+      this.close();        
+    } else {
+      alert(data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error al comunicarse con el servidor');
+  });
+};
+
+
 }

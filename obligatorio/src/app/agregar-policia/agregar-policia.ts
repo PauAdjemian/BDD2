@@ -11,33 +11,18 @@ import { FormsModule } from '@angular/forms';
 export class AgregarPolicia {
   nuevoPolicia = {
   CI: null,
-  comisaria: null as number | null,
+  comisaria: null,
   fecha: '',
   ID_establecimiento: null
 };
 hoy = new Date().toISOString().split('T')[0];
 isVisible = false;
 
-onSubmit() {
-  console.log('Datos a enviar:', this.nuevoPolicia);
-  if (this.nuevoPolicia.fecha < this.hoy) {
-    alert("La fecha debe ser hoy o posterior.");
-    return;
-  }
-  const recibido={
-    CI: this.nuevoPolicia.CI,
-    comisaria: this.nuevoPolicia.comisaria,
-    fecha: this.nuevoPolicia.fecha,
-    ID_establecimiento: this.nuevoPolicia.ID_establecimiento,
-  }
-  
-}
-
   open() {
     this.nuevoPolicia=
     {
       CI: null,
-      comisaria: null as number | null,
+      comisaria: null,
       fecha: '',
       ID_establecimiento: null,
     }
@@ -47,4 +32,41 @@ onSubmit() {
   close() {
     this.isVisible = false;
   }
-}
+
+onSubmit() {
+  console.log('Datos a enviar:', this.nuevoPolicia);
+  if (this.nuevoPolicia.fecha < this.hoy) {
+    alert("La fecha debe ser hoy o posterior.");
+    return;
+  }
+  const recibidos={
+    CI: this.nuevoPolicia.CI,
+    comisaría: this.nuevoPolicia.comisaria,
+    fecha: this.nuevoPolicia.fecha,
+    ID_establecimiento: this.nuevoPolicia.ID_establecimiento,
+  }
+
+fetch('http://localhost:3000/admin/cargarPolicia', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(recibidos)
+    
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exito) {
+      alert(data.message); 
+      this.close();        
+    } else {
+      alert(data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error al comunicarse con el servidor');
+  });
+};
+  }
+
