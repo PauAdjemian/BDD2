@@ -12,7 +12,7 @@ export class AgregarCandidato {
   isVisible = false;
 
   candidato = {
-    CI: null as number | null,
+    CI: null,
     partido: '',
     tipo_eleccion: '',
     fecha_eleccion: ''
@@ -33,11 +33,34 @@ export class AgregarCandidato {
   }
 
     onSubmit() {
-    const recibido = {
+    const recibidos = {
       CI: this.candidato.CI,
       partido: this.candidato.partido,
-      tipo_eleccion: this.candidato.tipo_eleccion,
-      fecha_eleccion: this.candidato.fecha_eleccion
+      tipo_elección: this.candidato.tipo_eleccion,
+      fecha_elección: this.candidato.fecha_eleccion
     };
 
-  }}
+    console.log(recibidos)
+    fetch('http://localhost:3000/admin/cargarCandidato', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(recibidos)
+    
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.exito) {
+      alert(data.message); 
+      this.close();        
+    } else {
+      alert(data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error al comunicarse con el servidor');
+  });
+};
+  }
