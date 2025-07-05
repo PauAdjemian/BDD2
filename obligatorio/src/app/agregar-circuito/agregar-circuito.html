@@ -1,0 +1,54 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal">
+    <form (ngSubmit)="onSubmit()" #circuitoForm="ngForm">
+
+      <label for="idEstablecimiento">ID Establecimiento:</label>
+      <input
+        type="number"
+        id="idEstablecimiento"
+        name="Id_establecimiento"
+        [(ngModel)]="circuito.Id_establecimiento"
+        required
+        min="1"
+        placeholder="Ingrese ID del establecimiento"
+      />
+
+
+      <label for="departamento">Departamento:</label>
+      <input
+        type="text"
+        id="departamento"
+        name="departamento"
+        [(ngModel)]="circuito.departamento"
+        required
+        placeholder="Ingrese departamento"
+      />
+
+      <label for="localidad">Localidad:</label>
+      <input
+        type="text"
+        id="localidad"
+        name="localidad"
+        [(ngModel)]="circuito.localidad"
+        required
+        placeholder="Ingrese localidad"
+      />
+
+      <label for="barrioZona">Barrio / Zona:</label>
+      <input
+        type="text"
+        id="barrioZona"
+        name="barrio_zona"
+        [(ngModel)]="circuito.barrio_zona"
+        required
+        placeholder="Ingrese barrio o zona"
+      />
+
+      <button type="submit" [disabled]="circuitoForm.invalid">ENVIAR</button>
+    </form>
+
+    <section class="button">
+      <button class="close-btn" (click)="close()">CANCELAR</button>
+    </section>
+  </div>
+</div>

@@ -35,9 +35,6 @@ export class AgregarCandidato {
     onSubmit() {
     const recibidos = {
       CI: this.candidato.CI,
-      partido: this.candidato.partido,
-      tipo_elección: this.candidato.tipo_eleccion,
-      fecha_elección: this.candidato.fecha_eleccion
     };
 
 

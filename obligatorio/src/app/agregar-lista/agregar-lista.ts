@@ -14,7 +14,8 @@ export class AgregarLista {
   lista = {
     ID_papeleta: null,
     numero: null,
-    imagen: ''
+    imagen: '',
+    partido: ''
   };
 
   open() {
@@ -22,7 +23,8 @@ export class AgregarLista {
     {
       ID_papeleta: null,
       numero: null,
-      imagen: ''
+      imagen: '',
+      partido: ''
     };
     this.isVisible = true;
 
@@ -36,7 +38,8 @@ export class AgregarLista {
     const recibidos = {
       ID_papeleta: this.lista.ID_papeleta,
       número: this.lista.numero,
-      imagen: this.lista.imagen
+      imagen: this.lista.imagen,
+      partido: this.lista.partido
     };
 
   
