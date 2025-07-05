@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './agregar-votante.css'
 })
 export class AgregarVotante {
-   isVisible = true;
+   isVisible = false;
     hoy = new Date().toISOString().split('T')[0];
 
   persona = {
