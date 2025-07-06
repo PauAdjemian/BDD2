@@ -19,12 +19,24 @@
             <input type="password"[(ngModel)]="ci" placeholder="Contraseña" autocomplete="off" name="Contraseña" readonly onfocus="this.removeAttribute('readonly');" />
         </section>
         
+       <section class="eleccion-row">
+            <div class="eleccion-campos">
+                <select [(ngModel)]="tipoEleccion" name="tipoEleccion">
+                    <option value="" disabled selected>Seleccionar tipo de elección</option>
+                    <option value="Nacional">Nacional</option>
+                    <option value="Departamental">Departamental</option>
+                </select>
+            </div>
+
+            <div class="boton-confirmar">
+                <button (click)="loginVotante()">CONFIRMAR</button>
+            </div>
+        </section>
+
     
         <app-confirmar-usuario #Popup></app-confirmar-usuario>
 
-        <section class="button">
-            <button (click)="loginVotante()">CONFIRMAR</button>
-        </section>
+        
 
     </section>    
 </section>
