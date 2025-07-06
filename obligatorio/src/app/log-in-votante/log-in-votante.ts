@@ -49,7 +49,7 @@ export class LogInVotante {
     .then(data => {
       if (data.autenticado) {
         sessionStorage.setItem('tipoEleccion', this.tipoEleccion);
-        this.Popup.open();
+        this.Popup.Confirmacion(this.ci);
       } else {
         alert('Credenciales incorrectas');
       }
