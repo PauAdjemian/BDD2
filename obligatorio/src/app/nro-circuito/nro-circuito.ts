@@ -16,35 +16,49 @@ export class NroCircuito {
 
   @ViewChild('Popup') popup!: PopUpPM;
 
-  async validarCircuito() {
-    console.log('Validando circuito:', this.nroCircuito);
-    const parametros = {
-      id: Number(this.nroCircuito)
-    }
-    
-    try {
-      const response = await fetch('http://localhost:3000/circuitos/existe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(parametros)
-      });
-      const data = await response.json();
-      console.log('Datos recibidos:', data);
-      if (response.ok) {
-        console.log('Circuito obtenido:', data);
-        if (data.exito){
+async validarCircuito() {
+  console.log('Validando circuito:', this.nroCircuito);
+  const parametros = {
+    id: Number(this.nroCircuito)
+  }
+
+  try {
+    // ✅ Verificar existencia
+    const responseExiste = await fetch('http://localhost:3000/circuitos/existe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(parametros)
+    });
+
+    const dataExiste = await responseExiste.json();
+    console.log('Datos recibidos (existe):', dataExiste);
+
+    if (responseExiste.ok && dataExiste.exito) {
+      // ✅ Si existe, verificar estado
+      const responseEstado = await fetch(`http://localhost:3000/circuitos/${this.nroCircuito}/estado`);
+      const dataEstado = await responseEstado.json();
+      console.log('Datos recibidos (estado):', dataEstado);
+
+      if (responseEstado.ok) {
+        if (dataEstado.estado) {
           sessionStorage.setItem('nroCircuito', String(this.nroCircuito));
           console.log('Circuito guardado en sessionStorage:', sessionStorage.getItem('nroCircuito'));
           this.popup.open();
+        } else {
+          alert('El circuito no está abierto.');
         }
       } else {
-        alert('Error al obtener el circuito');
+        alert('Error al obtener el estado del circuito');
       }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error al comunicarse con el servidor');
+    } else {
+      alert('El circuito no existe.');
     }
+
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error al comunicarse con el servidor');
   }
+}
 }
