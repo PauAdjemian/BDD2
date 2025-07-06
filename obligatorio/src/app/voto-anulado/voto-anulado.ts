@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-confirmar-voto',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './confirmar-voto.html',
-  styleUrl: './confirmar-voto.css'
+  selector: 'app-voto-anulado',
+  imports: [CommonModule, FormsModule],
+  templateUrl: './voto-anulado.html',
+  styleUrl: './voto-anulado.css'
 })
-export class ConfirmarVoto {
+export class VotoAnulado {
 
   @Input() idListaSeleccionada!: number;
   isVisible = false;
@@ -26,8 +26,8 @@ export class ConfirmarVoto {
   }
 
 
-  async votar() {
-    console.log("lista id",  this.idListaSeleccionada)
+  async votarAnulado() {
+
     const IDcircuito = sessionStorage.getItem('nroCircuito');
     if (!IDcircuito) {
       alert('No se encontró el ID del circuito en sessionStorage');
@@ -41,10 +41,11 @@ export class ConfirmarVoto {
     };
 
     try {
-      const papeleta = await fetch('http://localhost:3000/listas/IDpapeleta', {
+      const papeleta = await fetch('http://localhost:3000/listas/papeleta', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({id: this.idListaSeleccionada})
+        body: JSON.stringify({tipo: 'anulado', fecha_elección: new Date(), tipo_elección: sessionStorage.getItem('tipoEleccion')
+        })
       });
       const data1 = await papeleta.json();
 
@@ -65,15 +66,13 @@ export class ConfirmarVoto {
         this.observado = false;
       }
 
-      
-
       // Preparar el voto
       const voto = {
-        validez: 'válido',
+        validez: 'anulado',
         observado: this.observado,
         IDcircuito: parseInt(IDcircuito),
         IDpapeleta: data1.IDpapeleta,
-        IDlista: this.idListaSeleccionada
+        IDlista: null
       };
 
       console.log('Enviando voto:', voto);
@@ -96,4 +95,7 @@ export class ConfirmarVoto {
       alert('Error al votar');
     }
   }
+
+
+
 }

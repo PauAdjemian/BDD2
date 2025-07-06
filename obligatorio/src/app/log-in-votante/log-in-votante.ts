@@ -49,6 +49,7 @@ export class LogInVotante {
     .then(data => {
       if (data.autenticado) {
         sessionStorage.setItem('tipoEleccion', this.tipoEleccion);
+        sessionStorage.setItem('CI_votante', data.CI_votante);
         this.Popup.Confirmacion(this.ci);
       } else {
         alert('Credenciales incorrectas');

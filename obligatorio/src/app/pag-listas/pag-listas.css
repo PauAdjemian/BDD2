@@ -79,3 +79,39 @@ input {
   font-size: 1.3rem;
   margin-top: 2rem;
 }
+#contenedor {
+  display: flex;
+  flex-direction: column; /* cambia a columna para ordenar vertical */
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  padding-bottom: 2rem; /* espacio abajo */
+}
+
+#contenedor > button {
+  width: 60%;
+  max-width: 400px;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  margin: 0.5rem auto;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  bottom: 0;
+}
+
+#contenedor > button:first-of-type {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+#contenedor > button:last-of-type {
+  background-color: #d9534f;
+  color: white;
+}
+
+#contenedor > button:hover {
+  filter: brightness(0.95);
+}

@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-confirmar-voto',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './confirmar-voto.html',
-  styleUrl: './confirmar-voto.css'
+  selector: 'app-voto-blanco',
+  imports: [CommonModule, FormsModule],
+  templateUrl: './voto-blanco.html',
+  styleUrl: './voto-blanco.css'
 })
-export class ConfirmarVoto {
+export class VotoBlanco {
 
   @Input() idListaSeleccionada!: number;
   isVisible = false;
@@ -25,9 +25,8 @@ export class ConfirmarVoto {
     this.isVisible = false;
   }
 
-
-  async votar() {
-    console.log("lista id",  this.idListaSeleccionada)
+  async votarBlanco() {
+    this.open()
     const IDcircuito = sessionStorage.getItem('nroCircuito');
     if (!IDcircuito) {
       alert('No se encontró el ID del circuito en sessionStorage');
@@ -44,7 +43,7 @@ export class ConfirmarVoto {
       const papeleta = await fetch('http://localhost:3000/listas/IDpapeleta', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({id: this.idListaSeleccionada})
+        body: JSON.stringify({tipo: 'en_blanco', fecha_elección: new Date(), tipo_elección: sessionStorage.getItem('tipoEleccion')})
       });
       const data1 = await papeleta.json();
 
@@ -65,15 +64,13 @@ export class ConfirmarVoto {
         this.observado = false;
       }
 
-      
-
       // Preparar el voto
       const voto = {
-        validez: 'válido',
+        validez: 'en_blanco',
         observado: this.observado,
         IDcircuito: parseInt(IDcircuito),
         IDpapeleta: data1.IDpapeleta,
-        IDlista: this.idListaSeleccionada
+        IDlista: null
       };
 
       console.log('Enviando voto:', voto);
