@@ -45,6 +45,43 @@ listas = [
 
 listasFiltradas = [...this.listas];
 
+votar(lista: any) {
+  const IDcircuito = localStorage.getItem('IDcircuito');
+
+  if (!IDcircuito) {
+    alert('No se encontró el ID del circuito en localStorage');
+    return;
+  }
+
+  const voto = {
+    validez: true,
+    observado: false,
+    fecha_y_hora: new Date('hoy'),
+    IDcircuito: parseInt(IDcircuito), 
+    IDpapeleta: lista.IDpapeleta
+  };
+
+  console.log('Enviando voto:', voto);
+
+  fetch('http://localhost:3000/lista/votarLista', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(voto)
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log('Respuesta backend:', data);
+    alert(data.message);
+  })
+  .catch(err => {
+    console.error('Error al votar', err);
+    alert('Error al votar');
+  });
+}
+
+
 filtrarCandidatos() {
   const texto = this.searchText.toLowerCase();
 
