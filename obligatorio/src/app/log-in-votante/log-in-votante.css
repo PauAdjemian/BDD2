@@ -46,3 +46,33 @@ button:hover {
   background-color: #1e3c72;
 }
 
+.eleccion-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.eleccion-campos {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.eleccion-campos input,
+.eleccion-campos select {
+  font-size: 2.5rem;
+  padding: 8px 10px;
+  border: 2px solid #4a90e2;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.boton-confirmar button {
+  white-space: nowrap;
+  padding: 8px 20px;
+  font-size: 2.5rem;
+}
+

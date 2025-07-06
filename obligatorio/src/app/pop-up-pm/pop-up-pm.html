@@ -6,13 +6,13 @@
 
     <section class="content">
       <section class="credencial">
-        <h2>Usuario Administrador</h2>
-        <input type="text" placeholder="Usuario" autocomplete="off" name="Usuario"/>
+        <h2>Documento integrante de mesa:</h2>
+        <input type="text" [(ngModel)]="ci" placeholder="Usuario" autocomplete="off" name="Usuario"/>
       </section>
 
       <section class="Contraseña">
         <h2>Contraseña</h2>
-        <input type="password" placeholder="Contraseña" autocomplete="off" name="Contraseña" readonly onfocus="this.removeAttribute('readonly');" />
+        <input type="password" [(ngModel)]="contrasenia" placeholder="Contraseña" autocomplete="off" name="Contraseña" readonly onfocus="this.removeAttribute('readonly');" />
       </section>
 
       <section class="button">
