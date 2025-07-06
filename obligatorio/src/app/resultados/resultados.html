@@ -7,9 +7,10 @@
       <option value="Nacional">Nacional</option>
       <option value="Nacional por circuito">Nacional por circuito</option>
       <option value="Nacional por departamento">Nacional por departamento</option>
+      <option value="Nacional por Partido">Nacional por Partido</option>
     </select>
 
-    <input *ngIf="tipoFiltro !== 'Nacional'" 
+    <input *ngIf="tipoFiltro !== 'Nacional' && tipoFiltro !== 'Nacional por Partido'" 
            [(ngModel)]="valorFiltro" 
            name="valorFiltro"
            type="text" 

@@ -38,6 +38,7 @@ export class Resultados {
       case 'Nacional': this.resultadosNacionales(); break;
       case 'Nacional por circuito': this.resultadosNacionalesCircuito(); break;
       case 'Nacional por departamento': this.resultadosNacionalesPorDepartamento(); break;
+      case 'Nacional por Partido': this.resultadosNacionalesPorPartido(); break;
     }
     console.log(this.resultados)
   }
@@ -125,4 +126,30 @@ export class Resultados {
     }
   }
 
+  private async resultadosNacionalesPorPartido(){
+    const parametros = {
+      fecha_elección: '2025-07-06',
+    };
+    console.log('Parámetros enviados:', parametros);
+    try {
+      const response = await fetch('http://localhost:3000/resultados/resultadoNacionalPorPartido', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(parametros)
+      });
+      const data = await response.json();
+      console.log('Datos recibidos:', data);
+      if (response.ok) {
+        console.log('Resultados nacionales por partido obtenidos:', data);
+        this.resultados = data;
+      } else {
+        alert('Error al obtener resultados nacionales por partido');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al comunicarse con el servidor');
+    }
+  }
 }
