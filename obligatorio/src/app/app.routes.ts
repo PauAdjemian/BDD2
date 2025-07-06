@@ -11,6 +11,7 @@ import { CerrarCircuito } from './cerrar-circuito/cerrar-circuito';
 import { TareasAdmin } from './tareas-admin/tareas-admin';
 import { Resultados } from './resultados/resultados';
 
+
 export const routes: Routes = [
 {"path": 'mesa', component: LogInIntegranteMesa},
 {"path": 'admin', component: LogInAdmin},
@@ -24,7 +25,7 @@ export const routes: Routes = [
 {"path": 'tareas', component: TareasAdmin},
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)  ],
   exports: [RouterModule] 
 })
 export class AppRoutingModule {}

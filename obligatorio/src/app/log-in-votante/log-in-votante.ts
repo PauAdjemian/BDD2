@@ -38,7 +38,7 @@ export class LogInVotante {
     })
     .then(data => {
       if (data.autenticado) {
-        this.Popup.open();
+        this.Popup.Confirmacion(this.ci);
       } else {
         alert('Credenciales incorrectas');
       }

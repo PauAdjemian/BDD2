@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Votado } from "../votado/votado";
 
+
 @Component({
   selector: 'app-confirmar-usuario',
-  imports: [ReactiveFormsModule, CommonModule, Votado],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './confirmar-usuario.html',
   styleUrl: './confirmar-usuario.css'
 })
@@ -15,6 +16,11 @@ import { Votado } from "../votado/votado";
 export class ConfirmarUsuario {
 constructor(private router: Router) {}
 
+  votante={
+    nombre : '',
+    apellido : '',
+    CI : null
+  }
 
   isVisible = false;
 
@@ -43,6 +49,25 @@ constructor(private router: Router) {}
 
   irAlistas(){
     this.router.navigate(['/listas']);
+  }
+
+  Confirmacion(ci: number){
+    this.open();
+    fetch(`http://localhost:3000/votantes/${ci}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se encontró votante con esa cédula');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Datos votante:', data);
+      this.votante = data;  
+    })
+    .catch(error => {
+      console.error(error);
+      alert(error.message);
+    });
   }
 
 }
