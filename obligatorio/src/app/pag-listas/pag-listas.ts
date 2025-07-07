@@ -3,22 +3,36 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConfirmarVoto } from "../confirmar-voto/confirmar-voto";
 import { Datetime } from "../datetime/datetime";
+import { VotoAnulado } from "../voto-anulado/voto-anulado";
+import { VotoBlanco } from "../voto-blanco/voto-blanco";
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-pag-listas',
-  imports: [FormsModule, CommonModule, ConfirmarVoto, Datetime],
+  imports: [FormsModule, CommonModule, ConfirmarVoto, Datetime, VotoAnulado, VotoBlanco],
   templateUrl: './pag-listas.html',
   styleUrl: './pag-listas.css',
   standalone: true
 })
 export class PagListas {
 
+  @ViewChild('Popup') Popup!: ConfirmarVoto;
+
   searchText: string = '';
   listas: any[] = [];
   listasFiltradas: any[] = [];
 
+  listaSeleccionadaId: number = 0;
+
+  abrirConfirmacion(lista: any) {
+    this.listaSeleccionadaId = lista.id || lista.ID;
+    this.Popup.idListaSeleccionada = this.listaSeleccionadaId;
+    this.Popup.open();
+  }
+
   async ngOnInit() {
     console.log("lstg", sessionStorage.getItem('tipoEleccion'));
+    
     try {
       const tipo = sessionStorage.getItem('tipoEleccion');
       const fecha = new Date().toISOString().slice(0, 10);
@@ -45,6 +59,7 @@ export class PagListas {
         const id = row.ID;
         if (!listasMap.has(id)) {
           listasMap.set(id, {
+            id: id,
             numero: row.numero_lista,
             partido: row.partido,
             imagen: row.imagen,

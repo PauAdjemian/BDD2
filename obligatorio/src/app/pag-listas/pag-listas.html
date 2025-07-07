@@ -11,7 +11,7 @@
     <ul class="lista-candidatos">
       <li *ngFor="let lista of listasFiltradas">
         <button 
-        (click)="Popup.open()"
+        (click)="abrirConfirmacion(lista)"
           class="boton-candidato"
           [ngStyle]="{'background-image': 'url(' + lista.imagen + ')'}">
           
@@ -33,4 +33,9 @@
       </li>
     </ul>
   </div>
+    <button (click)="popUpBlanco.open()">Voto en Blanco</button>
+  <button (click)="popUpAnulado.open()">Anular Voto</button>
+
 </div>
+<app-voto-blanco #popUpBlanco></app-voto-blanco>
+<app-voto-anulado #popUpAnulado></app-voto-anulado>

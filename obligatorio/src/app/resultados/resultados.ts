@@ -128,7 +128,7 @@ export class Resultados {
 
   private async resultadosNacionalesPorPartido(){
     const parametros = {
-      fecha_elección: '2025-07-06',
+      fecha_elección: new Date().toISOString().split('T')[0], 
     };
     console.log('Parámetros enviados:', parametros);
     try {
