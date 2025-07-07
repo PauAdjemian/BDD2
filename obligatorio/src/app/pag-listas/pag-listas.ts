@@ -16,12 +16,13 @@ import { ViewChild } from '@angular/core';
 })
 export class PagListas {
 
+  @ViewChild('Popup') Popup!: ConfirmarVoto;
+
   searchText: string = '';
   listas: any[] = [];
   listasFiltradas: any[] = [];
 
   listaSeleccionadaId: number = 0;
-  Popup: any;
 
   abrirConfirmacion(lista: any) {
     this.listaSeleccionadaId = lista.id || lista.ID;
