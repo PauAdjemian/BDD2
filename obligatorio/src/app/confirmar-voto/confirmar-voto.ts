@@ -12,11 +12,15 @@ import { PopUpPM } from '../pop-up-pm/pop-up-pm';
 })
 export class ConfirmarVoto {
 
+  
+
   @Input() idListaSeleccionada!: number;
   isVisible = false;
   observado: boolean = false;
 
   constructor(private router: Router) {}
+
+  
 
   open() {
     this.isVisible = true;
@@ -89,6 +93,18 @@ export class ConfirmarVoto {
 
       const dataVoto = await resVoto.json();
       alert(dataVoto.message);
+
+      if(dataVoto.exito){
+        console.log("sd5vfsdvfsdzbfdcv")
+        const resMarcar = await fetch('http://localhost:3000/votos/marcar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({circuito: sessionStorage.getItem('nroCircuito'), fecha_elección: new Date().toISOString().split('T')[0], tipo_elección: sessionStorage.getItem('tipoEleccion'), ci: sessionStorage.getItem('CI_votante')})
+      });
+
+      const dataMarcar = await resMarcar.json();
+      alert(dataMarcar.message);
+      }
 
       // Cerrar el popup si todo salió bien
       this.router.navigate(['/votante']);
