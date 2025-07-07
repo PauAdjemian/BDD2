@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { PopUpPM } from '../pop-up-pm/pop-up-pm';
 
 @Component({
   selector: 'app-confirmar-voto',
@@ -41,13 +42,13 @@ export class ConfirmarVoto {
     };
 
     try {
-      const papeleta = await fetch('http://localhost:3000/listas/IDpapeleta', {
+      const papeleta = await fetch('http://localhost:3000/listas/papeleta', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({id: this.idListaSeleccionada})
       });
       const data1 = await papeleta.json();
-
+      console.log(data1.ID)
       // Validar circuito asignado
       const res = await fetch('http://localhost:3000/votantes/eleccion', {
         method: 'POST',
@@ -56,6 +57,7 @@ export class ConfirmarVoto {
       });
 
       const data = await res.json();
+      const idPapeleta = data1.IDpapeleta;
       console.log('Circuito asignado:', data.circuito_asignado);
 
       if (data.circuito_asignado != IDcircuito) {
@@ -72,7 +74,7 @@ export class ConfirmarVoto {
         validez: 'válido',
         observado: this.observado,
         IDcircuito: parseInt(IDcircuito),
-        IDpapeleta: data1.IDpapeleta,
+        IDpapeleta: idPapeleta,
         IDlista: this.idListaSeleccionada
       };
 
@@ -89,7 +91,8 @@ export class ConfirmarVoto {
       alert(dataVoto.message);
 
       // Cerrar el popup si todo salió bien
-      this.router.navigate(['/votante']);
+      //this.router.navigate(['/votante']);
+      this.close()
 
     } catch (err) {
       console.error('Error al votar', err);
