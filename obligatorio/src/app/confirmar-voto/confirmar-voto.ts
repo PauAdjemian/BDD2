@@ -91,8 +91,8 @@ export class ConfirmarVoto {
       alert(dataVoto.message);
 
       // Cerrar el popup si todo salió bien
-      //this.router.navigate(['/votante']);
-      this.close()
+      this.router.navigate(['/votante']);
+      
 
     } catch (err) {
       console.error('Error al votar', err);
